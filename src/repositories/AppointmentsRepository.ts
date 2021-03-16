@@ -1,13 +1,11 @@
-import Appointment from '../database/models/Appointments';
 import { EntityRepository, Repository } from 'typeorm';
+import Appointment from '../database/models/Appointments';
 
 @EntityRepository(Appointment)
-class AppointmentsRepository extends Repository<Appointment>{
-
+class AppointmentsRepository extends Repository<Appointment> {
   public async findByDate(date: Date): Promise<Appointment | null> {
-
     const findAppointment = await this.findOne({
-      where: {date},
+      where: { date },
     });
 
     return findAppointment || null;
